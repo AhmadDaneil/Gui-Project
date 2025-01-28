@@ -3,14 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package order_system;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+
 
 /**
  *
@@ -18,30 +12,6 @@ import javax.swing.JTextField;
  */
 public class FormFrame extends javax.swing.JFrame {
 
-    private JPanel jPanel1;
-    private JLabel jLabel4;
-    private JLabel jLabel10;
-    private JPanel jPanel2;
-    private JComboBox<Object> jComboBox2;
-    private JLabel jLabel5;
-    private JTextField jTextField1;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JComboBox<Object> jComboBox1;
-    private JButton jButton1;
-    private JButton jButton2;
-    private JTextField jTextField3;
-    private JLabel jLabel6;
-    private JLabel jLabel7;
-    private JComboBox<Object> jComboBox4;
-    private JRadioButton jRadioButton1;
-    private JRadioButton jRadioButton2;
-    private JRadioButton jRadioButton3;
-    private JLabel jLabel8;
-    private JButton jButton3;
-    private JLabel jLabel9;
-    private JComboBox<Object> jComboBox3;
 
 
     /**
@@ -49,6 +19,12 @@ public class FormFrame extends javax.swing.JFrame {
      */
     public FormFrame() {
         initComponents();
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Apples", "Bananas", "Oranges", "Grapes"}));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"1", "2", "3", "4", "5"}));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Grocery", "Electronics", "Clothing"}));
+        jTextField3.setEditable(false); // Make total field read-only
+        jTextField3.setText(""); // Ensure it's empty by default
+
     }
 
     /**
@@ -119,6 +95,11 @@ public class FormFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Payment Method *");
@@ -311,48 +292,67 @@ public class FormFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Thank You! Your order has been submitted successfully.");
+        if (jTextField1.getText().isEmpty() || jComboBox1.getSelectedItem() == null || 
+        jComboBox2.getSelectedItem() == null || jComboBox4.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(this, "Please fill in all required fields.");
+        return;
+    }
+
+    // Check payment method
+    String paymentMethod;
+    if (jRadioButton1.isSelected()) {
+        paymentMethod = "Debit Card";
+    } else if (jRadioButton2.isSelected()) {
+        paymentMethod = "Credit Card";
+    } else if (jRadioButton3.isSelected()) {
+        paymentMethod = "Other";
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a payment method.");
+        return;
+    }
+
+    // Success message
+    JOptionPane.showMessageDialog(this, "Thank You! Your order has been submitted successfully.\nPayment Method: " + paymentMethod);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        new PreviousFrame().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        try {
+        int quantity = Integer.parseInt((String) jComboBox2.getSelectedItem());
+        double unitPrice = Double.parseDouble(jTextField1.getText());
+        double total = quantity * unitPrice;
+        jTextField3.setText(String.valueOf(total)); // Set calculated total
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Please enter valid numeric values for quantity and price.");
+    }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    // Set Nimbus look and feel
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new FormFrame().setVisible(true);
-            }
-        });
+    } catch (Exception ex) {
+        System.err.println("Nimbus Look and Feel not available. Defaulting to another.");
     }
+
+    // Create and display the form
+    java.awt.EventQueue.invokeLater(() -> new FormFrame().setVisible(true));
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package order_system;
+import Home.Home;
 import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
 
 
 /**
@@ -318,7 +320,7 @@ public class FormFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new PreviousFrame().setVisible(true);
+        new Home().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -345,7 +347,7 @@ public class FormFrame extends javax.swing.JFrame {
                 break;
             }
         }
-    } catch (Exception ex) {
+    } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
         System.err.println("Nimbus Look and Feel not available. Defaulting to another.");
     }
 

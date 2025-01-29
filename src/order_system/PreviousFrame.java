@@ -8,13 +8,17 @@ package order_system;
  *
  * @author User
  */
-public class PreviousFrame {
+import javax.swing.JFrame;
 
-    public PreviousFrame() {
+public class PreviousFrame extends JFrame {
+    private JFrame Home;
+
+    public PreviousFrame(JFrame Home) {
+        this.Home = Home;
     }
 
-    void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void goBackToHome() {
+        this.setVisible(false); // Hide the current frame
+        Home.setVisible(true); // Show the home page
     }
-    
 }

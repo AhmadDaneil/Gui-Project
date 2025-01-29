@@ -395,7 +395,7 @@ public class receipt_design extends javax.swing.JFrame {
 
         jLabel24.setText("-------------------------------------------------------------------------------------------------------------------------------------");
 
-        jButton2.setText("Exit");
+        jButton2.setText("Back");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);

@@ -4,6 +4,7 @@
  */
 package Home;
 
+import javax.swing.JOptionPane;
 import order_system.FormFrame;
 import receipt.receipt_design;
 
@@ -166,9 +167,11 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-             // TODO add your handling code here:
-        this.dispose();
-        new ExitFrame().setVisible(true);
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to exit?");
+        if (a==0){
+            this.dispose();
+            new ExitFrame().setVisible(true);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

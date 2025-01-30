@@ -6,7 +6,6 @@ package Home;
 
 import javax.swing.JOptionPane;
 import order_system.FormFrame;
-import receipt.ReceiptDesign;
 
 /**
  *

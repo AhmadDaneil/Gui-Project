@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.SwingUtilities;
+import receipt.ReceiptDesign;
 
 
 /**
@@ -28,7 +30,7 @@ public class FormFrame extends javax.swing.JFrame {
         setupPriceMap();
         
         double total = 0;
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Apples", "Bananas", "Oranges", "Grapes"}));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Apples", "Bananas", "Oranges", "Grapes","Battery","Torch","Lamp Desk","Earbuds","T-Shirt","Jeans","Pants","Socks"}));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"1", "2", "3", "4", "5"}));
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Grocery", "Electronics", "Clothing"}));
         jTextField3.setEditable(false); // Make total field read-only
@@ -42,6 +44,15 @@ public class FormFrame extends javax.swing.JFrame {
         priceMap.put("Apples", 1.50);
         priceMap.put("Bananas", 0.75);
         priceMap.put("Oranges", 1.20);
+        priceMap.put("Grapes", 2.00);
+        priceMap.put("Battery", 2.40);
+        priceMap.put("Torch", 5.00);
+        priceMap.put("Earbuds", 12.50);
+        priceMap.put("Lamp Desk", 8.00);
+        priceMap.put("T-Shirt", 6.00);
+        priceMap.put("Jeans", 12.50);
+        priceMap.put("Pants", 6.75);
+        priceMap.put("Socks", 3.00);
         priceMap.put("Grapes", 2.00);
     }
     private void updateTotalPrice() {
@@ -214,17 +225,6 @@ public class FormFrame extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(99, 99, 99)
-                                .addComponent(jButton1)))
-                        .addGap(196, 196, 196)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(123, 123, 123))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,7 +249,18 @@ public class FormFrame extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(416, 774, Short.MAX_VALUE))))
+                        .addGap(416, 774, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(jButton1)))
+                        .addGap(196, 196, 196)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(122, 122, 122))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +283,7 @@ public class FormFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
@@ -281,8 +292,8 @@ public class FormFrame extends javax.swing.JFrame {
                         .addGap(131, 131, 131)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(jButton3))
+                        .addGap(11, 11, 11))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,8 +302,10 @@ public class FormFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton3)))
-                .addGap(11, 11, 11))
+                        .addComponent(jRadioButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(21, 21, 21))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -319,9 +332,21 @@ public class FormFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-if (jTextField1.getText().isEmpty() || jTextField3.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please select an item and quantity.");
+        if (orders.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No items selected!");
     }
+        else {
+                new ReceiptDesign(orders).setVisible(true);
+            }
+    String itemName = (String) jComboBox1.getSelectedItem();
+    int quantity = Integer.parseInt((String) jComboBox2.getSelectedItem());
+    double unitPrice = Double.parseDouble(jTextField1.getText());
+    double totalPrice = Double.parseDouble(jTextField3.getText());
+
+    // Pass the list of orders to the receipt
+    ReceiptDesign receipt = new ReceiptDesign(orders);
+    receipt.setVisible(true);
+    this.dispose(); // Close FormFrame
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
@@ -331,10 +356,23 @@ if (jTextField1.getText().isEmpty() || jTextField3.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please select an item and quantity.");
             return;
     }
-        // Get values
-        String itemName = (String) jComboBox1.getSelectedItem();
-        int quantity = Integer.parseInt((String) jComboBox2.getSelectedItem());
-        double unitPrice = Double.parseDouble(jTextField1.getText());
+    // Get values
+    String itemName = (String) jComboBox1.getSelectedItem();
+    int quantity = Integer.parseInt((String) jComboBox2.getSelectedItem());
+    double unitPrice = Double.parseDouble(jTextField1.getText());
+    double totalPrice = Double.parseDouble(jTextField3.getText());
+    
+    // Store order in the list
+    orders.add(new Order(itemName, quantity, unitPrice, totalPrice));
+    
+    // Success message
+    JOptionPane.showMessageDialog(this, "Item added: " + itemName + " x " + quantity);
+    
+    // Clear form for next selection
+    jTextField1.setText("");
+    jTextField3.setText("");
+    jComboBox1.setSelectedIndex(0);
+    jComboBox2.setSelectedIndex(0);
 
     // Check payment method
     String paymentMethod;
@@ -346,23 +384,8 @@ if (jTextField1.getText().isEmpty() || jTextField3.getText().isEmpty()) {
         paymentMethod = "Other";
     } else {
         JOptionPane.showMessageDialog(this, "Please select a payment method.");
-        return;
+        
     }
-    // Store order in the list
-        Order order = new Order(itemName, quantity, unitPrice, paymentMethod);
-        orders.add(order);
-
-    // Success message
-    JOptionPane.showMessageDialog(this, "Thank You! Your order has been submitted successfully.\nPayment Method: " + paymentMethod);
-    // Clear form
-        jTextField1.setText("");
-        jTextField3.setText("");
-        jComboBox1.setSelectedIndex(0);
-        jComboBox2.setSelectedIndex(0);
-        jComboBox4.setSelectedIndex(0);
-        jRadioButton1.setSelected(false);
-        jRadioButton2.setSelected(false);
-        jRadioButton3.setSelected(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
@@ -420,6 +443,7 @@ if (jTextField1.getText().isEmpty() || jTextField3.getText().isEmpty()) {
 
     // Create and display the form
     java.awt.EventQueue.invokeLater(() -> new FormFrame().setVisible(true));
+    SwingUtilities.invokeLater(FormFrame::new);
     
 }
 

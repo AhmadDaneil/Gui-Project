@@ -6,13 +6,14 @@ public class Order {
     private double totalPrice;
     private String paymentMethod;
 
-    public Order(String itemName, int quantity, double unitPrice, String paymentMethod) {
-        this.itemName = itemName;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.totalPrice = quantity * unitPrice;
-        this.paymentMethod = paymentMethod;
-    }
+    public Order(String itemName, int quantity, double unitPrice, double totalPrice) {
+    this.itemName = itemName;
+    this.quantity = quantity;
+    this.unitPrice = unitPrice;
+    this.totalPrice = totalPrice; // Note: Normally, totalPrice should be calculated from quantity * unitPrice
+    this.paymentMethod = "Not specified"; // Default value if paymentMethod isn't provided
+}
+
 
     // Getters
     public String getItemName() { return itemName; }
